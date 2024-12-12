@@ -7,7 +7,6 @@ public class Team {
 	private String nombre;
     private int vidas = 200;
     private boolean defendido = false;
-    //private static Scanner sc = new Scanner(System.in);
     private List<Team> equiposDisponibles; // Lista de equipos para elegir el objetivo
 
     // Métodos getter y setter para nombre, vidas y misiles

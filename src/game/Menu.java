@@ -1,6 +1,5 @@
 package game;
 
-import java.util.Scanner;
 
 public class Menu {
 
@@ -16,7 +15,7 @@ public class Menu {
     // Método para mostrar y capturar la selección del menú
     public static int menuRequest() {
         int optn;
-        Scanner sc = new Scanner(System.in);
+        
         System.out.println(BLUE + "Bienvenido al juego " + YELLOW + "COLDWAR" + RESET);
         System.out.println(CYAN + "Para empezar seleccione una opción:" + RESET);
         System.out.println("-----------------------");
@@ -27,9 +26,9 @@ public class Menu {
         System.out.println(RED + "[0] Salir" + RESET);
         System.out.println("-----------------------");
         System.out.print("Opción: ");
-        optn = sc.nextInt();
-        sc.close();
-        return optn;
+        optn = ScannerSingleton.getInstance().nextInt();        
+        //sc.close();
+       return optn;
     }
 
     // Método para gestionar la opción seleccionada

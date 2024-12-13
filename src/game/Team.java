@@ -1,7 +1,7 @@
 package game;
 
 import java.util.List;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Team {
 	private String nombre;
@@ -39,18 +39,21 @@ public class Team {
     }
 
     // Método que decide si atacar o defender
-    public void decisionRonda(Scanner sc) {
+    public void decisionRonda() {
+    	
         System.out.println(nombre + ", ¿quieres atacar o defender? (escribe \"atacar\" o \"defender\"):");
-        String decision = sc.nextLine().toLowerCase();
-	
+        String decision = ScannerSingleton.getInstance().nextLine().toLowerCase();
+        //ScannerSingleton.getInstance().nextLine();
+        
         if ("atacar".equals(decision)) {
             System.out.println("¿A qué equipo deseas atacar? (Escribe el nombre del equipo):");
-            String objetivoNombre = sc.nextLine();
+            String objetivoNombre = ScannerSingleton.getInstance().nextLine();
+            //ScannerSingleton.getInstance().nextLine();
             Team equipoObjetivo = obtenerEquipoPorNombre(objetivoNombre);
 
             if (equipoObjetivo != null && equipoObjetivo.getVidas() > 0 && !this.nombre.equals(equipoObjetivo.getNombre())) {
                 System.out.println(equipoObjetivo.getNombre() + ", ¿quieres defenderte? (escribe S/N):");
-                String defensa = sc.nextLine().toLowerCase();
+                String defensa = ScannerSingleton.getInstance().nextLine().toLowerCase();
                 if(defensa.equals("s")) {
                 	equipoObjetivo .setDefendido(true);
                 }

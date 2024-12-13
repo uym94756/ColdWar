@@ -27,4 +27,10 @@ public class ScannerSingleton {
             scanner = null;
         }
    	}
+    public static String nextLine() {
+        if (scanner == null) {
+            throw new IllegalStateException("Scanner no inicializado. Llama a getInstance() primero.");
+        }
+        return scanner.nextLine();
+    }
   }

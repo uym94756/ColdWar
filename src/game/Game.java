@@ -1,6 +1,6 @@
 package game;
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Game {
 	public static final int EQUIPOS_ESTANDAR = 5;
@@ -9,53 +9,34 @@ public class Game {
     	ArrayList<Team>equipos = crearEquipos(EQUIPOS_ESTANDAR);
     	
     	System.out.println("Comienza el juego! Los equipos son los siguientes:");
-    	mostrarEquipos(equipos);
+    	mostrarEquipos(equipos); 
+    	System.out.println("RONDA 1");
     	
+    	for(Team equipo : equipos) {
+    		equipo.decisionRonda();
+    	}
     	
-    	
-    	
-    	
-    	
-    	
-    	/*
-    	final Scanner scc = new Scanner(System.in);
-        
-        
-        ArrayList<Team> equipos= new ArrayList<Team>();
-        
-        System.out.println("Introduzca los nombres de los equipos:");
-       
-            for (int i = 0; i <EQUIPOS_ESTANDAR; i++) {
-            	
-                equipos.add(new Team());
-                System.out.print("Nombre del equipo " + (i + 1) + ": ");
-            	String teamName = scc.nextLine();
-            	equipos.get(i).setNombre(teamName); // Leer línea con BufferedReader
-                
-            }
-            int cont=1;
-            System.out.println("Equipos registrados:");
-            for (Team equipo : equipos) {
-            	
-                if (equipo != null && equipo.getNombre() != null) {
-                    System.out.println("Equipo " + cont +": "+ equipo.getNombre());
-                }
-                cont++;
-            }
-         */
       }
+    
+    
     public static ArrayList<Team> crearEquipos(int n) {
-    	Scanner sc = new Scanner(System.in);
+    	String[] colores = ConsoleColors.getColors();
+    	String reset = ConsoleColors.RESET;
+    	//Scanner sc = new Scanner(System.in);
     	ArrayList<Team> equipos= new ArrayList<Team>();
     	for (int i = 0; i <n; i++) {
         	
             equipos.add(new Team());
-            System.out.print("Nombre del equipo " + (i + 1) + ": ");
-        	String teamName = sc.nextLine();
+            String color = colores[((i+1)-1)%colores.length];
+            System.out.print(color+"Nombre del equipo " + (i + 1) + ": "+reset);
+        	//String teamName = sc.nextLine();
+            String teamName = ScannerSingleton.getInstance().nextLine();
         	equipos.get(i).setNombre(teamName); // Leer línea con BufferedReader
         }
     	return equipos;
-    }   
+    } 
+    
+    
     public static void mostrarEquipos(ArrayList<Team>equipos) {
     	String[] colores = ConsoleColors.getColors();
     	String reset = ConsoleColors.RESET;
